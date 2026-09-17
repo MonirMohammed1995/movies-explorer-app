@@ -1,5 +1,9 @@
 import { Film } from 'lucide-react';
-import { FaFacebook, FaGithub } from 'react-icons/fa';
+import { FaFacebook, FaGithub, FaReact, FaTv } from 'react-icons/fa';
+import { IoHome } from 'react-icons/io5';
+import { MdMovie } from 'react-icons/md';
+import { RiTailwindCssFill } from 'react-icons/ri';
+import { SiReactrouter } from 'react-icons/si';
 import { Link } from 'react-router-dom';
 
 export default function Footer() {
@@ -22,17 +26,17 @@ export default function Footer() {
           <div>
             <h3 className="text-white font-semibold mb-3 text-xs uppercase tracking-wider">Quick Navigation</h3>
             <ul className="space-y-2 text-sm">
-              <li><Link to="/" className="hover:text-rose-400 transition-colors">Home Landing</Link></li>
-              <li><Link to="/movies" className="hover:text-rose-400 transition-colors">Movie Directory</Link></li>
+              <li><Link to="/" className="hover:text-rose-400 transition-colors flex justify-start items-center gap-2"><IoHome className="w-5 h-5"/>Home Landing</Link></li>
+              <li><Link to="/movies" className="hover:text-rose-400 transition-colors flex justify-start items-center gap-2"><MdMovie className="w-5 h-5"/>Movie Directory</Link></li>
             </ul>
           </div>
 
           <div>
             <h3 className="text-white font-semibold mb-3 text-xs uppercase tracking-wider">Technologies</h3>
             <ul className="space-y-2 text-sm text-slate-400">
-              <li>React & React Router</li>
-              <li>Tailwind CSS</li>
-              <li>TVMaze REST API</li>
+              <li className="flex gap-4 justify-start items-center"><FaReact className="w-5 h-5"/>React & <SiReactrouter className="w-5 h-5"/> React Router</li>
+              <li className="flex gap-4 justify-start items-center"><RiTailwindCssFill className="w-5 h-5"/>Tailwind CSS</li>
+              <li className="flex gap-4 justify-start items-center"><FaTv className="w-5 h-5"/>TVMaze REST API</li>
             </ul>
           </div>
         </div>
