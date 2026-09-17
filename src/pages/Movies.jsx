@@ -2,7 +2,7 @@ import { useState, useEffect } from 'react';
 import { Search, Film, AlertCircle, Loader2 } from 'lucide-react';
 import MovieCard from '../components/MovieCard';
 import MovieModal from '../components/MovieModal';
-import { fetchMoviesOrShows } from '../services/api'; // আলাদা করা API ফাইল ইমপোর্ট করা হলো
+import { fetchMoviesOrShows } from '../services/api';
 
 export default function Movies() {
   const [query, setQuery] = useState('');
@@ -25,7 +25,6 @@ export default function Movies() {
       }
     };
 
-    // Debounce search query to optimize network requests
     const timer = setTimeout(() => {
       loadMovies();
     }, 400);
@@ -35,15 +34,12 @@ export default function Movies() {
 
   return (
     <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10 space-y-8">
-      
-      {/* Header & Search Bar */}
       <div className="flex flex-col md:flex-row md:items-center justify-between gap-4 border-b border-slate-800 pb-6">
         <div>
           <h1 className="text-2xl sm:text-3xl font-bold text-white tracking-tight">Movie Directory</h1>
           <p className="text-slate-400 text-sm mt-1">Browse all titles or search for your favorite shows instantly.</p>
         </div>
 
-        {/* Search Input Bar */}
         <div className="relative w-full md:w-80">
           <span className="absolute inset-y-0 left-0 pl-3.5 flex items-center pointer-events-none text-slate-400">
             <Search className="w-4 h-4" />
@@ -58,7 +54,6 @@ export default function Movies() {
         </div>
       </div>
 
-      {/* Loading State */}
       {loading && (
         <div className="flex flex-col items-center justify-center py-32 space-y-4">
           <Loader2 className="w-10 h-10 text-rose-500 animate-spin" />
@@ -66,7 +61,6 @@ export default function Movies() {
         </div>
       )}
 
-      {/* Error State */}
       {error && (
         <div className="bg-rose-500/10 border border-rose-500/20 p-6 rounded-2xl flex items-center gap-3 text-rose-400">
           <AlertCircle className="w-6 h-6 flex-shrink-0" />
@@ -77,7 +71,6 @@ export default function Movies() {
         </div>
       )}
 
-      {/* Empty State */}
       {!loading && !error && movies.length === 0 && (
         <div className="text-center py-32 space-y-3">
           <div className="w-16 h-16 bg-slate-900 border border-slate-800 rounded-2xl flex items-center justify-center mx-auto text-slate-500">
@@ -90,7 +83,6 @@ export default function Movies() {
         </div>
       )}
 
-      {/* Movie Grid */}
       {!loading && !error && movies.length > 0 && (
         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
           {movies.map((movie) => (
@@ -103,14 +95,12 @@ export default function Movies() {
         </div>
       )}
 
-      {/* Details Modal */}
       {selectedMovie && (
         <MovieModal 
           movie={selectedMovie} 
           onClose={() => setSelectedMovie(null)} 
         />
       )}
-
     </div>
   );
 }

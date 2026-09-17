@@ -8,8 +8,6 @@ export default function MovieCard({ movie, onSelect }) {
 
   return (
     <div className="group bg-slate-900/60 border border-slate-800/80 rounded-2xl overflow-hidden hover:border-slate-700 transition-all duration-300 hover:shadow-xl hover:shadow-rose-950/20 flex flex-col">
-      
-      {/* Poster Image Container */}
       <div className="relative aspect-[2/3] w-full overflow-hidden bg-slate-950">
         <img 
           src={posterUrl} 
@@ -19,13 +17,11 @@ export default function MovieCard({ movie, onSelect }) {
         />
         <div className="absolute inset-0 bg-gradient-to-t from-slate-950 via-transparent opacity-60 group-hover:opacity-40 transition-opacity" />
         
-        {/* Rating Badge */}
         <div className="absolute top-3 right-3 bg-slate-950/80 backdrop-blur-md px-2.5 py-1 rounded-lg border border-slate-800 flex items-center gap-1.5 text-xs font-semibold text-amber-400 shadow-lg">
           <Star className="w-3.5 h-3.5 fill-amber-400 text-amber-400" />
           <span>{rating}</span>
         </div>
 
-        {/* Genre Pills */}
         {genres.length > 0 && (
           <div className="absolute bottom-3 left-3 right-3 flex flex-wrap gap-1.5 pointer-events-none">
             {genres.slice(0, 2).map((genre, idx) => (
@@ -37,7 +33,6 @@ export default function MovieCard({ movie, onSelect }) {
         )}
       </div>
 
-      {/* Content & Action */}
       <div className="p-4 flex flex-col flex-grow justify-between space-y-3">
         <div>
           <h3 className="font-semibold text-white text-base line-clamp-1 group-hover:text-rose-400 transition-colors">
@@ -62,7 +57,6 @@ export default function MovieCard({ movie, onSelect }) {
           <span>See Details</span>
         </button>
       </div>
-
     </div>
   );
 }
