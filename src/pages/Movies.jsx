@@ -13,7 +13,7 @@ export default function Movies() {
 
   // Pagination states
   const [currentPage, setCurrentPage] = useState(1);
-  const itemsPerPage = 12; // প্রতি পেজে কয়টি করে মুভি দেখাবে
+  const itemsPerPage = 12;
 
   useEffect(() => {
     const loadMovies = async () => {
@@ -37,7 +37,6 @@ export default function Movies() {
     return () => clearTimeout(timer);
   }, [query]);
 
-  // Pagination logic: বর্তমান পেজের জন্য মুভিগুলো কাটছাঁট করে নেওয়া
   const indexOfLastItem = currentPage * itemsPerPage;
   const indexOfFirstItem = indexOfLastItem - itemsPerPage;
   const currentMovies = movies.slice(indexOfFirstItem, indexOfLastItem);
@@ -46,14 +45,13 @@ export default function Movies() {
   const handlePageChange = (newPage) => {
     if (newPage >= 1 && newPage <= totalPages) {
       setCurrentPage(newPage);
-      window.scrollTo({ top: 0, behavior: 'smooth' }); // পেজ বদলালে স্ক্রিন উপরে নিয়ে যাবে
+      window.scrollTo({ top: 0, behavior: 'smooth' });
     }
   };
 
   return (
     <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10 space-y-8">
       
-      {/* Header & Search Bar */}
       <div className="flex flex-col md:flex-row md:items-center justify-between gap-4 border-b border-slate-800 pb-6">
         <div>
           <h1 className="text-2xl sm:text-3xl font-bold text-white tracking-tight">Movie Directory</h1>
@@ -82,7 +80,6 @@ export default function Movies() {
         </div>
       )}
 
-      {/* Error State */}
       {error && (
         <div className="bg-rose-500/10 border border-rose-500/20 p-6 rounded-2xl flex items-center gap-3 text-rose-400">
           <AlertCircle className="w-6 h-6 flex-shrink-0" />
@@ -93,7 +90,6 @@ export default function Movies() {
         </div>
       )}
 
-      {/* Empty State */}
       {!loading && !error && movies.length === 0 && (
         <div className="text-center py-32 space-y-3">
           <div className="w-16 h-16 bg-slate-900 border border-slate-800 rounded-2xl flex items-center justify-center mx-auto text-slate-500">
@@ -150,7 +146,6 @@ export default function Movies() {
         </>
       )}
 
-      {/* Details Modal */}
       {selectedMovie && (
         <MovieModal 
           movie={selectedMovie} 

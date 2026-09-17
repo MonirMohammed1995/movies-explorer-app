@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { Sparkles, Film, Compass, Search, Loader2, ArrowRight, ChevronLeft, ChevronRight } from 'lucide-react';
 import MovieCard from '../components/MovieCard';
@@ -13,7 +13,7 @@ export default function Home() {
 
   // Pagination states for Home page
   const [currentPage, setCurrentPage] = useState(1);
-  const itemsPerPage = 6; // হোম পেজে প্রতি পেজে নির্দিষ্ট ৬টি করে কার্ড দেখাবে
+  const itemsPerPage = 6; 
 
   useEffect(() => {
     const loadMovies = async () => {
@@ -21,7 +21,7 @@ export default function Home() {
       try {
         const data = await fetchMoviesOrShows(query);
         setMovies(data);
-        setCurrentPage(1); // সার্চ কুয়েরি বদলালে পেজ ১ এ রিসেট হবে
+        setCurrentPage(1);
       } catch (err) {
         console.error("Failed to load movies:", err);
       } finally {
@@ -45,7 +45,7 @@ export default function Home() {
   const handlePageChange = (newPage) => {
     if (newPage >= 1 && newPage <= totalPages) {
       setCurrentPage(newPage);
-      window.scrollTo({ top: 500, behavior: 'smooth' }); // কার্ড সেকশনে স্মুথ স্ক্রোল করবে
+      window.scrollTo({ top: 500, behavior: 'smooth' });
     }
   };
 
@@ -78,7 +78,6 @@ export default function Home() {
             Explore and discover your favorite movies from around the world instantly.
           </p>
 
-          {/* হোম পেজের সার্চ বার */}
           <div className="max-w-xl mx-auto pt-2">
             <div className="relative w-full">
               <span className="absolute inset-y-0 left-0 pl-4 flex items-center pointer-events-none text-slate-400">
@@ -106,7 +105,6 @@ export default function Home() {
         </div>
       </div>
 
-      {/* Featured 6 Movie Cards Section with Pagination */}
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 w-full space-y-8">
         
         <div className="flex items-center justify-between border-b border-slate-900 pb-4">
@@ -139,7 +137,6 @@ export default function Home() {
           </div>
         )}
 
-        {/* মুভি গ্রিড ও পেজিনেশন */}
         {!loading && currentMovies.length > 0 && (
           <>
             <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
@@ -185,7 +182,6 @@ export default function Home() {
 
       </div>
 
-      {/* Details Modal */}
       {selectedMovie && (
         <MovieModal 
           movie={selectedMovie} 
