@@ -22,7 +22,7 @@ export default function Movies() {
       try {
         const data = await fetchMoviesOrShows(query);
         setMovies(data);
-        setCurrentPage(1); // সার্চ বা কুয়েরি বদলালে পেজ ১ এ ফিরে যাবে
+        setCurrentPage(1);
       } catch (err) {
         setError(err.message);
       } finally {
